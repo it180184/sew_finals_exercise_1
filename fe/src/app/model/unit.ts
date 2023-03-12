@@ -5,4 +5,5 @@ export interface Unit {
   subject: string
   classId: string
   teacherId: number
+  changed?: string
 }

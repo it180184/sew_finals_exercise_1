@@ -27,7 +27,6 @@ export class TimetableComponent implements OnInit {
     this.http.listTeachers().subscribe(data => this.teachers = data);
     this.http.listClasses().subscribe(data => {
       this.classes = data
-      console.log(data)
     });
   }
 
@@ -61,17 +60,19 @@ export class TimetableComponent implements OnInit {
   }
 
   updateUnit(unit: Unit) {
+    unit.changed = 'self';
     if (!this.unitsToUpdate.includes(unit))
       this.unitsToUpdate.push(unit);
-    console.log(this.unitsToUpdate)
   }
 
   saveChanged() {
-    this.unitsToUpdate.forEach((unit) => {
+    for (let i = this.unitsToUpdate.length - 1; i >= 0; i--) {
+      let unit = this.unitsToUpdate.pop();
+      if (!unit) break;
       this.http.update(unit).subscribe(() => {
         console.log("updated");
         this.updateTimetable();
       });
-    })
+    }
   }
 }

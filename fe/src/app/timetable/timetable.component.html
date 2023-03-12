@@ -14,15 +14,20 @@
       <table>
         <thead>
         <tr>
-          <td *ngFor="let day of days">{{day}}</td>
+          <td></td>
+          <td *ngFor="let day of days"><div>{{day}}</div></td>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let unit of timeUnits; let i = index">
+          <td><div>{{i + 1}}</div></td>
           <td *ngFor="let day of days; let j = index">
-            <div  *ngIf="getUnit(i + 1, j + 1) as unit" [ngStyle]="{'changed': unitsToUpdate.includes(unit)}">
-              {{unit.subject}},
-              <mat-form-field>
+            <div  *ngIf="getUnit(i + 1, j + 1) as unit" [ngClass]="{'changed': unit.changed && unit.changed === 'self'}">
+              <mat-form-field appearance="fill">
+                <mat-label>Gegenstand</mat-label>
+                <input matInput [(ngModel)]="unit.subject" (ngModelChange)="updateUnit(unit)">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
                 <mat-label>Lehrer</mat-label>
                 <mat-select [(ngModel)]="unit.teacherId" (ngModelChange)="updateUnit(unit)">
                   <mat-option *ngFor="let teacher of teachers" [value]="teacher.id">{{teacher.lastName}}</mat-option>
