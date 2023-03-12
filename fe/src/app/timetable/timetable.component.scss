@@ -1,0 +1,13 @@
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  td {
+    border: 1px solid white;
+    padding: 1rem;
+
+    .changed {
+      border: red 3px solid;
+    }
+  }
+}
