@@ -1,7 +1,7 @@
-Sun Mar 12 18:05:54 CET 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
+Sun Mar 12 21:32:41 CET 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Sun Mar 12 18:19:18 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0186-d6c9-2f08-00001f384bd8 
+Sun Mar 12 21:33:13 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0186-d786-7dfa-00001f308970 
 on database directory C:\Users\Fabian\Desktop\finals_exercise\be\db\db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
 Loaded from file:/C:/Program%20Files/Java/db-derby-10.16.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation

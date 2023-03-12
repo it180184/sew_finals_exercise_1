@@ -24,5 +24,9 @@ table {
     .changed {
       border: greenyellow 3px solid;
     }
+
+    .remote-changes {
+      border: red 3px solid;
+    }
   }
 }

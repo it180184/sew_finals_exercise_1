@@ -4,6 +4,7 @@ import {Teacher} from "../model/teacher";
 import {Class} from "../model/class";
 import {Unit} from "../model/unit";
 import {MatSelectChange} from "@angular/material/select";
+import {UpdateService} from "../services/update.service";
 
 @Component({
   selector: 'app-timetable',
@@ -20,7 +21,7 @@ export class TimetableComponent implements OnInit {
   timeUnits = new Array(10);
   unitsToUpdate: Unit[] = [];
 
-  constructor(private readonly http: HttpService) {
+  constructor(private readonly http: HttpService, private readonly updateService: UpdateService) {
   }
 
   ngOnInit(): void {
@@ -28,6 +29,16 @@ export class TimetableComponent implements OnInit {
     this.http.listClasses().subscribe(data => {
       this.classes = data
     });
+    this.updateService.startWebsocket().asObservable().subscribe((unit) => {
+      this.units = this.units?.map(u => {
+        if (u.classId == unit.classId && unit.unit == u.unit && unit.day == u.day) {
+          console.log('change')
+          unit.changed = 'remote';
+          return unit;
+        }
+        return u;
+      })
+    })
   }
 
   updateTimetable() {

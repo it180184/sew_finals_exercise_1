@@ -15,14 +15,21 @@
         <thead>
         <tr>
           <td></td>
-          <td *ngFor="let day of days"><div>{{day}}</div></td>
+          <td *ngFor="let day of days">
+            <div>{{day}}</div>
+          </td>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let unit of timeUnits; let i = index">
-          <td><div>{{i + 1}}</div></td>
+          <td>
+            <div>{{i + 1}}</div>
+          </td>
           <td *ngFor="let day of days; let j = index">
-            <div  *ngIf="getUnit(i + 1, j + 1) as unit" [ngClass]="{'changed': unit.changed && unit.changed === 'self'}">
+            <div *ngIf="getUnit(i + 1, j + 1) as unit" [ngClass]="{
+              'changed': unit.changed && unit.changed === 'self',
+              'remote-changes': unit.changed && unit.changed === 'remote'
+            }">
               <mat-form-field appearance="fill">
                 <mat-label>Gegenstand</mat-label>
                 <input matInput [(ngModel)]="unit.subject" (ngModelChange)="updateUnit(unit)">

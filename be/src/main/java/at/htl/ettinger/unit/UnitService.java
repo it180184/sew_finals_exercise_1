@@ -1,9 +1,7 @@
 package at.htl.ettinger.unit;
 
 import at.htl.ettinger.schoolclass.SchoolClass;
-import at.htl.ettinger.schoolclass.SchoolClassService;
 import at.htl.ettinger.teacher.Teacher;
-import at.htl.ettinger.teacher.TeacherService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,7 +21,7 @@ public class UnitService {
                 .collect(Collectors.toList());
     }
 
-    public long postUnit(Unit u, Teacher t, SchoolClass sc) {
+    public Unit postUnit(Unit u, Teacher t, SchoolClass sc) {
         u.schoolClass = sc;
         u.teacher = t;
         return unitRepository.save(u);
